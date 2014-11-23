@@ -1,0 +1,32 @@
+public class Solution {
+public int maxProfit(int[] prices) {
+    if (prices == null || prices.length <= 1) {
+        return 0;
+    }
+    int n = prices.length;
+    int[] endsAt = new int[n]; 
+    int[] startsAt = new int[n];
+    int lowest = prices[0];
+    // From left, find the max profit if 1st transac ends at i.
+    // Just like the first version of this problem.
+    for (int i = 1; i < n; i++) {
+        // in the first loop, endsAt[0] = 0
+        endsAt[i] = Math.max(endsAt[i - 1], prices[i] - lowest);
+        lowest = Math.min(lowest, prices[i]);
+    }
+    int highest = prices[n - 1];
+    // From right, find the max profit if 2nd transac starts at i.
+    // It is a reversed version of the previous for-loop logic.
+    for (int i = n - 2; i >= 0; i--) {
+        // in the first loop, startsAt[n-1] = 0
+        startsAt[i] = Math.max(startsAt[i + 1], highest - prices[i]);
+        highest = Math.max(highest, prices[i]);
+    }
+    int value = 0;
+    // combine to get the max result
+    for (int i = 0; i < n; i++) {
+        value = Math.max(value, endsAt[i] + startsAt[i]);
+    }
+    return value;
+}
+}
