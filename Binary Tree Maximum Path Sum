@@ -1,0 +1,19 @@
+public class Solution {
+    private int max_sum=Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        int sum=0;
+        DFS(root);
+        return max_sum;
+    }
+    
+    public int DFS(TreeNode root) {
+        if (root==null) return 0;
+        
+        int left=Math.max(DFS(root.left),0);
+        int right=Math.max(DFS(root.right), 0);
+
+        int value=left>right?left:right;
+        if ((left+right+root.val)>max_sum) max_sum=left+right+root.val;
+        return value+root.val;
+    }
+}
