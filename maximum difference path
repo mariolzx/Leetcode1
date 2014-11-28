@@ -1,0 +1,35 @@
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can use System.out.println for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    private int difference=0;
+    public int solution(Tree T) {
+        // write your code in Java SE 8
+        if (T==null) return 0;
+        int max=T.x;
+        int min=T.x;
+        
+        DFS(T, T.x, T.x);
+        return difference;
+    }
+    
+    int DFS(Tree root, int max, int min){
+       if (root==null) return 0;
+        
+        if (max<root.x) max=root.x;
+        if (min>root.x) min=root.x;
+        
+        int left=DFS(root.l, max, min);
+        int right=DFS(root.r, max, min);
+        int value=left>right?left:right;
+        int value2=max-min;
+        if (value2>difference) {
+         difference=value2;}
+         
+         return 0;
+        }
+         
+        
