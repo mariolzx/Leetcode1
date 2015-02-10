@@ -1,0 +1,16 @@
+public class Solution {
+    public boolean isMatch(String s, String p) {
+        int si = 0, pi = 0;
+        int ss=-1, pp =-1;
+        while(si<s.length())
+        {
+            if(si<s.length() && pi<p.length() && s.charAt(si)==p.charAt(pi)){si++; pi++; continue;}
+            if(si<s.length() && pi<p.length() && p.charAt(pi)=='?'){si++; pi++; continue;}
+            if(si<s.length() && pi<p.length() && p.charAt(pi)=='*'){ss=si; pp=pi++; continue;}
+            if(pp!=-1 && pp <p.length()){si =ss++; pi=pp +1; continue;}
+            return false;
+        }
+        while (pi<p.length() && p.charAt(pi)=='*'){pi++;}
+        return pi==p.length();
+    }
+}
