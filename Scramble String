@@ -1,3 +1,4 @@
+http://www.lifeincode.net/programming/leetcode-scramble-string-java/
 public class Solution {
     public boolean isScramble(String s1, String s2) {
         //Check lengths.
