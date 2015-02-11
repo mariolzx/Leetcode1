@@ -1,3 +1,5 @@
+http://blog.csdn.net/abcbc/article/details/8978146 
+ 
   public int numDistinct1(String S, String T) {
     // Start typing your Java solution below
     // DO NOT write main() function
