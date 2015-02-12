@@ -1,3 +1,6 @@
+http://www.lifeincode.net/programming/leetcode-palindrome-partitioning-i-and-iijava/
+
+
 public class Solution {
     public int minCut(String s) {
         int n = s.length();
