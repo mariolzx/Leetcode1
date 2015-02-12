@@ -19,3 +19,13 @@ public int longestValidParentheses(String s) {
     }
     return maxLen;
 }
+
+
+括号题也不是只用stack才能做，这题是算长度，所以stack那种一match就俩一起pop了的方式就不适合了。求极值，一维dp最好使。
+d[i]: 以i开头的最长valid parentheses有多长。
+d[i] =
+if  (str[i] == ‘)’)，以右括号开头必定invalid，d[i] = 0
+if (str[i] == ‘(‘)，以左括号开头
+我们想看对应的有木有右括号。因为d[i + 1]代表的sequence肯定是左括号开头右括号结尾，所以我们想catch((…))这种情况。j = i + 1 + d[i + 1]，正好就是str[i]后面越过完整sequence的下一个，若是右括号，d[i] = 2 + d[i + 1]
+除此之外，还有包起来后因为把后面的右括号用了而导致跟再往后也连起来了的情况，如((..))()()()。所以d[i]还要再加上j后面那一段的d[j + 1]
+这个定义和最长公共字串那题的定义类似，都是“以某个固定位置开始/结束”。看两头的方式又像palindrome。从后往前的一维dp也不常见。挺好玩的，一下复习好多东西。
