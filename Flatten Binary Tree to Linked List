@@ -35,3 +35,30 @@ public class FlattenBinaryTreeToLinkedList {
 		}
 	}
 }
+
+
+
+Iterative Code: DFS or pre-order traversal
+
+public class Solution {
+    public void flatten(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        Stack<TreeNode> toVisit = new Stack<TreeNode>();
+        if(root==null) return;
+        toVisit.push(root);
+        TreeNode prev = null;
+        while(!toVisit.isEmpty()){
+            TreeNode cur = toVisit.pop();
+            if(cur.right!=null)
+                toVisit.push(cur.right);
+            if(cur.left!=null)
+                toVisit.push(cur.left);
+            if(prev!=null){
+                prev.left=null;
+                prev.right = cur;
+            }
+            prev=cur;
+        }
+    }
+}
