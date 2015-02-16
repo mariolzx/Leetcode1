@@ -1,0 +1,37 @@
+//recursive, time:O(n), space complexity is the complexity of the stack: O(logn)。
+
+public class FlattenBinaryTreeToLinkedList {
+	private TreeNode lastVisit = null;
+
+	public void flatten(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		TreeNode savedRight = root.right;
+		if (lastVisit != null) {
+			lastVisit.left = null;
+			lastVisit.right = root;
+		}
+		lastVisit = root;
+		flatten(root.left);
+		flatten(savedRight);
+	}
+}
+
+//iterative
+public class FlattenBinaryTreeToLinkedList {
+	public void flatten(TreeNode root) {
+		while (root != null) {
+			if (root.left != null) {
+				TreeNode p = root.left;
+				while (p.right != null) {
+					p = p.right;
+				}
+				p.right = root.right;
+				root.right = root.left;
+				root.left = null;
+			}
+			root = root.right;
+		}
+	}
+}
