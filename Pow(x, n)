@@ -24,15 +24,20 @@ public double pow(double x, int n) {
 }
 
 ////////////////////////
-int powFast(int b, int e) {
-    int p = 1;   
-    while (e > 0) {
-        if(e%2 != 0) {
-            p = p*b;  
-        } 
-        e = e / 2;
-        b = b * b;
+public class Solution {
+    public double pow(double x, int n) {
+        double res=1;
+        double result=0;
+        int m=Math.abs(n);
+        while (m>0) {
+            if (m%2!=0) {res=res*x;}
+            m=m/2;
+            x=x*x;
+        }
+    if (n<0) return 1/res;
+    return res;
     }
-    return p;
 }
+
+
 
