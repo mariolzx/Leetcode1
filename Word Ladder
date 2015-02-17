@@ -1,3 +1,6 @@
+//A queue is used to do breath first traversal.
+//a map is used to store the visited nodes. It is the map between original node and copied node.
+
 /**
  * Definition for undirected graph.
  * class UndirectedGraphNode {
@@ -18,7 +21,7 @@ public class Solution {
         UndirectedGraphNode newHead = new UndirectedGraphNode(node.label);
  
         queue.add(node);
-        map.put(node, newHead);
+        map.put(node, newHead); //map orignal head and copied head
  
         while(!queue.isEmpty()){
             UndirectedGraphNode curr = queue.pop();
