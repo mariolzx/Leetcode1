@@ -1,38 +1,41 @@
+/**
+ * Definition for undirected graph.
+ * class UndirectedGraphNode {
+ *     int label;
+ *     List<UndirectedGraphNode> neighbors;
+ *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+ * };
+ */
 public class Solution {
-    public int ladderLength(String start, String end, HashSet<String> dict) {
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if(node == null)
+            return null;
  
-        if (dict.size() == 0)  
-            return 0; 
+        LinkedList<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+        HashMap<UndirectedGraphNode, UndirectedGraphNode> map = 
+                                   new HashMap<UndirectedGraphNode,UndirectedGraphNode>();
  
-        LinkedList<String> wordQueue = new LinkedList<String>();
-        LinkedList<Integer> distanceQueue = new LinkedList<Integer>();
+        UndirectedGraphNode newHead = new UndirectedGraphNode(node.label);
  
-        wordQueue.add(start);
-        distanceQueue.add(1);
+        queue.add(node);
+        map.put(node, newHead);
  
-        while(!wordQueue.isEmpty()){
-            String currWord = wordQueue.pop();
-            Integer currDistance = distanceQueue.pop();
+        while(!queue.isEmpty()){
+            UndirectedGraphNode curr = queue.pop();
+            List<UndirectedGraphNode> currNeighbors = curr.neighbors; 
  
-            if(currWord.equals(end)){
-                return currDistance;
-            }
- 
-            for(int i=0; i<currWord.length(); i++){
-                char[] currCharArr = currWord.toCharArray();
-                for(char c='a'; c<='z'; c++){
-                    currCharArr[i] = c;
- 
-                    String newWord = new String(currCharArr);
-                    if(dict.contains(newWord)){
-                        wordQueue.add(newWord);
-                        distanceQueue.add(currDistance+1);
-                        dict.remove(newWord);
-                    }
+            for(UndirectedGraphNode aNeighbor: currNeighbors){
+                if(!map.containsKey(aNeighbor)){
+                    UndirectedGraphNode copy = new UndirectedGraphNode(aNeighbor.label);
+                    map.put(aNeighbor,copy);
+                    map.get(curr).neighbors.add(copy);
+                    queue.add(aNeighbor);
+                }else{
+                    map.get(curr).neighbors.add(map.get(aNeighbor));
                 }
             }
-        }
  
-        return 0;
+        }
+        return newHead;
     }
 }
