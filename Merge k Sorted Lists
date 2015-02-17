@@ -1,5 +1,5 @@
 // T(k) = 2T(k/2)+O(n*k); O(nklogk)
-
+http://blog.csdn.net/linhuanmars/article/details/19899259
 
 public ListNode mergeKLists(ArrayList<ListNode> lists) {
     if(lists==null || lists.size()==0)
