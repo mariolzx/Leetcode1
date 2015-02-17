@@ -34,7 +34,10 @@ public class Solution {
                     map.get(curr).neighbors.add(copy);
                     queue.add(aNeighbor);
                 }else{
-                    map.get(curr).neighbors.add(map.get(aNeighbor));
+                    map.get(curr).neighbors.add(map.get(aNeighbor)); 
+                    //Even though the node already in the map as another node's neighbor, 
+                    //it still needs to be current node's neighbor
+                    
                 }
             }
  
