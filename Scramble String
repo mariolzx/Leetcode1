@@ -1,41 +1,31 @@
-http://www.lifeincode.net/programming/leetcode-scramble-string-java/
+http://blog.csdn.net/fightforyourdream/article/details/17707187
 
 public class Solution {
     public boolean isScramble(String s1, String s2) {
-        //Check lengths.
-        if (s1.length() != s2.length())
+        int len = s1.length();
+        if(len != s2.length()) {
             return false;
-        if (s1.equals(s2))
-            return true;
-            
-        int L = s1.length();
-        boolean[][][] scramble = new boolean[L][L][L];
-        for (int i = 0; i < L; i++) {
-            for (int j = 0; j < L; j++)
-                if (s1.charAt(i) == s2.charAt(j))
-                    scramble[0][i][j] = true;
         }
         
-        for (int k = 2; k <= L; k++) {
-            for (int i = L - k; i >= 0; i--) {
-                for (int j = L - k; j >= 0; j--) {
-                    boolean canScramble = false;
-                    for (int m = 1; m < k; m++) {
-                        canScramble = (scramble[m - 1][i][j] && scramble[k - m - 1][i + m][j + m]) || (scramble[m - 1][i][j + k -m] && scramble[k - m - 1][i + m][j]);
-                        if (canScramble)
-                            break;
+        boolean[][][] canScramble = new boolean[len][len][len+1];   // i,j with sublength
+        for(int i=0; i<len; i++) {
+            for(int j=0; j<len; j++) {
+                canScramble[i][j][1] = s1.charAt(i) == s2.charAt(j);    // substring start from i with length 1, compared with substring start from j with length 1
+            }
+        }
+        
+        for(int sublen=2; sublen<=len; sublen++) {
+            // end_pos = x+(sublen-1) <= len-1, so x <= len-sublen
+            for(int i=0; i<=len-sublen; i++) {
+                for(int j=0; j<=len-sublen; j++) {
+                    for(int p=1; p<sublen; p++) {       // split position
+                        canScramble[i][j][sublen] |= (canScramble[i][j][p] && canScramble[i+p][j+p][sublen-p]) || 
+                                                     (canScramble[i][j+sublen-p][p] && canScramble[i+p][j][sublen-p]);
                     }
-                    scramble[k - 1][i][j] = canScramble;
                 }
             }
         }
         
-        return scramble[L - 1][0][0];
+        return canScramble[0][0][len];
     }
 }
-
-//Another way is to use DP. I use a three dimension array scramble[][][] to save the states. 
-//What scramble[k][i][j] means is that two substrings of length k, one starts from i of string s1, 
-//another one starts from j of string s2, are scramble. We are trying to find scramble[L][0][0]. 
-//For every length k, we try to divide the string to two parts differently, 
-//checking if there is a way that can make it true.
