@@ -1,4 +1,6 @@
-	bool isSymmetric(TreeNode *root) 
+class Solution {
+public:
+bool isSymmetric(TreeNode *root) 
 	{
 		if (!root) return true;
 		return isSymmetric(root->left, root->right);
@@ -9,3 +11,4 @@
 		if (lt && !rt || !lt && rt || lt->val != rt->val) return false;
 		return isSymmetric(lt->left, rt->right) &&isSymmetric(lt->right, rt->left);
 	}
+};
