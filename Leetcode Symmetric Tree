@@ -1,14 +1,20 @@
-class Solution {
-public:
-bool isSymmetric(TreeNode *root) 
-	{
-		if (!root) return true;
-		return isSymmetric(root->left, root->right);
-	}
-	bool isSymmetric(TreeNode *lt, TreeNode *rt)
-	{
-		if (!lt && !rt) return true;
-		if (lt && !rt || !lt && rt || lt->val != rt->val) return false;
-		return isSymmetric(lt->left, rt->right) &&isSymmetric(lt->right, rt->left);
-	}
-};
+public class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(root==null) return true;
+        return isSymmetric(root.left,root.right);
+    }
+    
+    public boolean isSymmetric(TreeNode a, TreeNode b){
+        if(a==null) return b==null;
+        if(b==null) return false;
+        
+        if(a.val!=b.val) return false;
+        
+        if(!isSymmetric(a.left,b.right)) return false;
+        if(!isSymmetric(a.right,b.left)) return false;
+        
+        return true;
+    }
+}
