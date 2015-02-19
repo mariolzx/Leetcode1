@@ -1,0 +1,11 @@
+	bool isSymmetric(TreeNode *root) 
+	{
+		if (!root) return true;
+		return isSymmetric(root->left, root->right);
+	}
+	bool isSymmetric(TreeNode *lt, TreeNode *rt)
+	{
+		if (!lt && !rt) return true;
+		if (lt && !rt || !lt && rt || lt->val != rt->val) return false;
+		return isSymmetric(lt->left, rt->right) &&isSymmetric(lt->right, rt->left);
+	}
