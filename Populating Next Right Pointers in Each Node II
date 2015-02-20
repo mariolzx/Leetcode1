@@ -2,7 +2,8 @@ public class Solution {
     public void connect(TreeLinkNode root) {
         if(root==null) return;
         TreeLinkNode head = null; // the head node of the next level
-        TreeLinkNode prev = null; // the previous node of the current node. current node is in the current level and previous node is in the next level
+        TreeLinkNode prev = null; // the previous node of the current node. 
+                                  //current node is in the current level and previous node is in the next level
         TreeLinkNode curr = root; // current node
         while(curr!=null) {   
             while(curr!=null) {
