@@ -1,5 +1,9 @@
 Bottom up approach:
-Although the code for the top-down approach seems concise, it is actually subtle and there are a lot of hidden traps if you are not careful. The other approach is thinking recursively in a bottom-up fashion. If we reassign the bottom-level nodes before the upper ones, we won’t have to make copies and worry about overwriting something. We know the new root will be the left-most leaf node, so we begin the reassignment here., w5 \) H9 {1 }/ P* r& q7 D
+Although the code for the top-down approach seems concise, it is actually subtle and there are a lot of hidden traps
+if you are not careful. The other approach is thinking recursively in a bottom-up fashion. If we reassign the bottom
+-level nodes before the upper ones, we won’t have to make copies and worry about overwriting something. We know the 
+new root will be the left-most leaf node, so we begin the reassignment here., w5 \) H9 {1 }/ P* r& q7 D
+
 public TreeNode UpsideDownBinaryTree(TreeNode root) {
    return dfsBottomUp(root, null);
 }
