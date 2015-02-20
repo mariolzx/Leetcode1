@@ -1,0 +1,60 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Stack<TreeNode> currLevel = new Stack<TreeNode>();
+        Stack<TreeNode> nextLevel = new Stack<TreeNode>();
+        Stack<TreeNode> tmp;
+        
+        currLevel.push(root);
+        boolean normalOrder = true;
+        int count=1;
+        int next=0;
+
+
+            ArrayList<Integer> currLevelResult = new ArrayList<Integer>();
+
+            while (!currLevel.isEmpty()) {
+                TreeNode node = currLevel.pop();
+                count--;
+                currLevelResult.add(node.val);
+
+                if (normalOrder) {
+                    if (node.left != null) {
+                        nextLevel.push(node.left);
+                        next++;
+                    }
+                    if (node.right != null) {
+                        nextLevel.push(node.right);
+                        next++;
+                    }
+                } else {
+                    if (node.right != null) {
+                        nextLevel.push(node.right);
+                        next++;
+                    }
+                    if (node.left != null) {
+                        nextLevel.push(node.left);
+                        next++;
+                    }
+                }
+            if (count==0) {
+            result.add(currLevelResult);
+            currLevelResult = new ArrayList<Integer>();
+            
+            currLevel = nextLevel;
+            nextLevel = new Stack<TreeNode>();
+            
+            normalOrder = !normalOrder;
+            count=next;
+            next=0;
+                }
+            }
+        return result;
+
+    }
+}
