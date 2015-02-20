@@ -10,7 +10,7 @@ public class Solution {
                 
                 if(curr.left!=null) {
                     if(prev==null) {
-                        head = curr.left;
+                        head = curr.left; //save head for next level
                     } 
                     else {prev.next = curr.left;}
                     prev = curr.left;
@@ -18,7 +18,7 @@ public class Solution {
                 
                 if(curr.right!=null) {
                     if(prev==null) {
-                        head = curr.right;
+                        head = curr.right;  //save head for next level
                     }
                     else {prev.next = curr.right;}
                     prev = curr.right;
