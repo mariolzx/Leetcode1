@@ -1,0 +1,20 @@
+public class Solution {
+    public int majorityElement(int[] num) {
+        int n = num.length;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int elem : num) {
+            if (map.containsKey(elem)) {
+                map.put(elem, map.get(elem)+1);
+            }
+            else {
+                map.put(elem, 1);
+            }
+        }
+        for (int item : map.keySet()) {
+            if (map.get(item) > n/2) {
+                return item;
+            }
+        }
+        return -1;
+    }
+}
