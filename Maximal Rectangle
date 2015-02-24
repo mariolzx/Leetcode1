@@ -1,4 +1,5 @@
-public int maximalRectangle2(char[][] matrix) {
+public class Solution {
+public int maximalRectangle(char[][] matrix) {
         int m = matrix.length;
         int n = m == 0 ? 0 : matrix[0].length;
         int[][] height = new int[m][n + 1];
@@ -39,3 +40,4 @@ public int maximalRectangle2(char[][] matrix) {
          }
          return maxArea;
      }
+}
