@@ -35,3 +35,43 @@ public class Solution {
         }
     }
 }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////my solution
+public class Solution {
+    public LinkedList<LinkedList<String>> partition(String s) {
+        int n = s.length();
+        boolean[][] isPalindrome = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j >= 0; j--) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (i - j < 2 || isPalindrome[i - 1][j + 1])
+                        isPalindrome[i][j] = true;
+                }
+            }
+        }
+        LinkedList<LinkedList<String>> results=new LinkedList<LinkedList<String>>();
+        LinkedList<String> solution=new LinkedList<>();
+        getresult(s, 0, solution, results, isPalindrome);
+        return results;
+    }
+    
+    private void getresult(String s, int start, LinkedList<String> solution, LinkedList<LinkedList<String>> results, boolean[][] isPalindrome) {
+        if (start==s.length()) {
+            LinkedList<String> temp=new LinkedList<String>();
+            temp.addAll(solution);
+            results.add(temp);
+            return;
+        }
+        
+        for (int i=start; i<s.length(); i++) {
+            if (isPalindrome[i][start]==true) {
+                solution.add(s.substring(start, i+1));
+                getresult(s, i+1, solution, results, isPalindrome);
+                solution.remove(solution.size()-1);
+            }
+        }
+        
+    }
+}
