@@ -7,7 +7,8 @@ public class Solution {
 
     public ArrayList<String> wordBreakHelper(String s, Set<String> dict, Map<String, ArrayList<String>> memo){
         if(memo.containsKey(s)) return memo.get(s);
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<String>(); 
+        //every time, create a new ArrayList so that this level will not depend on the previous level
         int n = s.length();
         if(n <= 0) return result;
         for(int len = 1; len <= n; ++len){
@@ -18,7 +19,8 @@ public class Solution {
                 }else{
                     String prefix = s.substring(len);
                     ArrayList<String> tmp = wordBreakHelper(prefix, dict, memo);
-                    for(String item:tmp){
+                    for(String item:tmp){ // get every element from previous level ArrayList; 
+                    //If the previous level ArrayList is empty, it means the prefix cannot form a valid list
                         item = subfix + " " + item;
                         result.add(item);
                     }
