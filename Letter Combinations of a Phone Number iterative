@@ -17,3 +17,29 @@ public class Solution {
         return rec;
     }
 }
+
+
+//////////////////////////////////my solution
+public class Solution {
+    public List<String> letterCombinations(String digits) {
+            
+    int len=digits.length();
+    LinkedList<String> solution=new LinkedList<>();
+    if (len==0) return solution;
+    solution.add("");
+    String[] st=new String[]{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+   
+   for (int i=0; i<len; i++) {
+      int position=digits.charAt(i)-'2'; 
+        String temp=st[position];
+        int size=solution.size();
+             for (int j=0; j<size; j++ ) {
+                 String st1=solution.pop();
+                 for (int z=0; z<temp.length(); z++) {
+                      solution.add(st1+temp.charAt(z));
+                 }
+       }
+   }
+   return solution;
+}
+}
