@@ -13,10 +13,11 @@ public class Solution {
   for (int i=0; i<S.length; i++) {
       int st=0;
       int size=results.size();
-      if (S[i]==previous) {st=size-count;}
-      
+      if (S[i]==previous) {size_previous=size-count;} //get previous iteration size
+      //In sum up, when meet the same element as previous one, then generate new subsets ONLY from the subsets generated from previous iteration, 
+      //other than the whole subsets list
       count=0;
-      for (int j=st; j<size; j++) {
+      for (int j=size_previous; j<size; j++) {
           ArrayList<Integer> solution=new ArrayList<Integer>(results.get(j));
           solution.add(S[i]);
           results.add(solution);
