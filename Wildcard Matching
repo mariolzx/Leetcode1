@@ -14,3 +14,7 @@ public class Solution {
         return pi==p.length();
     }
 }
+
+//Using a "greedy" approach, where we try to reach the end of p, saving the last occurrence of '*' 
+//but  match an * by the empty string. In the case that we arrive to a state we cannot go on, 
+//we retrieve the saved state and we make the * to match one character more each than the previous time.
