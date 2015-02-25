@@ -1,3 +1,4 @@
+//target=2, candidates=[1, 2]
 public class Solution {
     private LinkedList<LinkedList<Integer>> results=new LinkedList<LinkedList<Integer>>();
     public LinkedList<LinkedList<Integer>> combinationSum(int[] candidates, int target) {
