@@ -1,0 +1,29 @@
+public class Solution {
+        public ArrayList<ArrayList<Integer>> subsetsWithDup(int[] S) {
+         ArrayList<ArrayList<Integer>> results=new ArrayList<ArrayList<Integer>>();
+        if(S == null || S.length == 0) {
+            return results;
+        }
+        Arrays.sort(S);
+       results.add(new ArrayList<Integer>());
+       int previous=S[0];
+       int count=1;
+        
+  for (int i=0; i<S.length; i++) {
+      int st=0;
+      int size=results.size();
+      if (S[i]==previous) {st=size-count;}
+      
+      count=0;
+      for (int j=st; j<size; j++) {
+          ArrayList<Integer> solution=new ArrayList<Integer>(results.get(j));
+          solution.add(S[i]);
+          results.add(solution);
+          count++;
+          }
+     previous=S[i];
+  }
+        return results;
+    }
+    
+}
