@@ -20,3 +20,30 @@ public class Solution {
         }
     }
 }
+
+//////////////////////////////////////////////////my solution
+public class Solution {
+    LinkedList<String> results=new LinkedList<>();
+    public List<String> letterCombinations(String digits) {
+        if (digits.length()==0) return results;
+    StringBuilder solution=new StringBuilder();
+    String[] st=new String[]{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    helper(digits, 0, solution, st);
+    return results;
+    }   
+    
+    private void helper(String digits, int start, StringBuilder solution, String[] st) {
+     if (start==digits.length()) {
+         results.add(solution.toString());
+         return;}
+         
+         int position=digits.charAt(start)-'2'; 
+         String temp=st[position];
+         
+      for (int i=0; i<temp.length(); i++) {
+          solution.append(temp.charAt(i));
+          helper(digits, start+1, solution, st);
+          solution.deleteCharAt(solution.length()-1);
+       }
+    }  
+}
