@@ -18,3 +18,29 @@ public ArrayList<ArrayList<Integer>> subsets(int[] S) {
     return res;
 }
 }
+
+
+/////////////////////////////////////////////////////////my solution
+public class Solution {
+    
+    public ArrayList<ArrayList<Integer>> subsets(int[] S) {
+         ArrayList<ArrayList<Integer>> results=new ArrayList<ArrayList<Integer>>();
+        if(S == null || S.length == 0) {
+            return results;
+        }
+        Arrays.sort(S);
+       results.add(new ArrayList<Integer>());
+        
+  for (int i=0; i<S.length; i++) {
+      int size=results.size();
+      for (int j=0; j<size; j++) {
+          ArrayList<Integer> solution=new ArrayList<Integer>(results.get(j));
+          solution.add(S[i]);
+          results.add(solution);
+          }
+      
+  }
+        return results;
+    }
+    
+}
