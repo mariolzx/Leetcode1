@@ -1,0 +1,27 @@
+public class Solution {
+    private LinkedList<LinkedList<Integer>> results=new LinkedList<LinkedList<Integer>>();
+    public LinkedList<LinkedList<Integer>> combinationSum2(int[] candidates, int target) {
+    Arrays.sort(candidates);    
+    LinkedList<Integer> solution=new LinkedList<Integer>();    
+    helper(candidates, 0, target, solution);
+    return results;
+    }
+    
+    private void helper(int[] candidates, int k, int target, LinkedList<Integer> solution) {
+        if (target<0) return;
+        if (target==0) { 
+            LinkedList<Integer> res=new LinkedList<Integer>(solution);
+            results.add(res);
+            return;
+        }
+        
+     for (int i=k; i<candidates.length; i++) {
+         
+         solution.add(candidates[i]);
+         helper(candidates, i+1, target-candidates[i], solution);
+         solution.remove(solution.size()-1);
+         while ((i<candidates.length-1)&&(candidates[i+1]==candidates[i])) i++;
+     }
+     
+    }
+}
