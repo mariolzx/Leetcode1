@@ -1,0 +1,11 @@
+public class Solution {
+ public boolean isSymmetric(TreeNode root) {  
+    if(root==null) return true;  
+    return helper(root.left,root.right);  
+   }  
+   public boolean helper(TreeNode l, TreeNode r){  
+     if(l==null) return r==null;  
+     if(r==null) return l==null;  
+     return l.val==r.val && helper(l.left, r.right) && helper(l.right,r.left);  
+   }  
+}
