@@ -1,3 +1,5 @@
+http://www.cnblogs.com/hzhesi/p/4285793.html
+
 public class Solution {
 public List<String> findRepeatedDnaSequences(String s) {
 	List<String> result = new ArrayList<String>();
