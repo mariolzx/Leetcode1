@@ -32,3 +32,6 @@ public String simplifyPath(String path) {
         return res.toString();
     }
 }
+
+
+// http://www.cnblogs.com/springfor/p/3869666.html
