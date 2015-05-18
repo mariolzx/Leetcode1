@@ -21,3 +21,6 @@ public int maxProfit(int k, int[] prices) {
 	return global[k];
 }
 }
+
+http://blog.csdn.net/foreverling/article/details/43911309
+http://www.programcreek.com/2014/03/leetcode-best-time-to-buy-and-sell-stock-iv-java/
