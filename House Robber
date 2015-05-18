@@ -1,0 +1,15 @@
+ public class Solution {  
+   public int rob(int[] num) {  
+     if(num == null || num.length == 0) return 0;  
+     // base case  
+     int pre = 0;  
+     int cur = num[0];  
+     // iteration  
+     for(int i = 2;i <= num.length;i++){  
+       int temp = cur;  
+       cur = Math.max(cur, pre + num[i-1]);  
+       pre = temp;  
+     }  
+     return cur;  
+   }  
+ }
