@@ -1,0 +1,13 @@
+public class Solution {
+  int hammingWeight(int x) {
+  int total_ones = 0;
+  while (x != 0) {
+    x = x & (x-1);
+    total_ones++;
+  }
+  return total_ones;
+}
+}
+
+
+http://articles.leetcode.com/2010/09/number-of-1-bits.html
