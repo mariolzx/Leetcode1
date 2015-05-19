@@ -1,9 +1,32 @@
  public class Solution {  
    // you need treat n as an unsigned value  
    public int reverseBits(int n) {  
-     int m = 0;  
-     for(int i = 0;i < 32;i++)  
-       if((n & (0x00000001 << i)) != 0) m |= (0x80000000 >>> i);  
-     return m;  
+    	//存储反转后各位上的数 bits[高位...低位]
+    	int[] bits = new int[32];
+        int num = 0;
+        
+        Arrays.fill(bits, 0);
+        
+        //如果是是负数 ，则将符号位直接放到bits[31]上
+        if(n < 0) {
+        	n = n ^ Integer.MIN_VALUE;	//异或
+        	bits[31] = 1;
+        }
+        
+        //计算各位上的数
+        for (int i = 0; i < bits.length - 1; i++) {
+			bits[i] = n % 2;
+			n /= 2;
+		}
+        
+        for(int i = 1; i < bits.length; i ++) {
+        	num <<= 1;
+        	num += bits[i];
+        }
+        
+        //判断符号位
+        return bits[0] == 1 ? num | Integer.MIN_VALUE : num; 
    }  
  }  
+ 
+ http://blog.csdn.net/ever223/article/details/44537445
