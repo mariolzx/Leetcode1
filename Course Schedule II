@@ -9,7 +9,7 @@ public int[] findOrder(int numCourses, int[][] prerequisites) {
     int count=0;
     
  
-    if(numCourses == 0 || len == 0){
+    if(numCourses == 0){
         return new int[0];
     }
  
@@ -40,7 +40,7 @@ public int[] findOrder(int numCourses, int[][] prerequisites) {
                 pCounter[prerequisites[i][0]]--;
                 if(pCounter[prerequisites[i][0]]==0){
                     numNoPre++;
-                    result[count]=i;
+                    result[count]=prerequisites[i][0];
                     count++;
                     queue.add(prerequisites[i][0]);
                 }
