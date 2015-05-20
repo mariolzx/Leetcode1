@@ -1,22 +1,28 @@
 public class Solution {
-    public int majorityElement(int[] num) {
-        int n = num.length;
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int elem : num) {
-            if (map.containsKey(elem)) {
-                map.put(elem, map.get(elem)+1);
-            }
-            else {
-                map.put(elem, 1);
+ public int majorityElement(int[] num) {
+     int n = num.length;
+        int candidate = num[0], counter = 0;
+        for (int i : num) {
+            if (counter == 0) {
+                candidate = i;
+                counter = 1;
+            } else {
+                if (i == candidate) {
+                    counter++;
+                } else {
+                    counter--;
+                }
             }
         }
-        for (int item : map.keySet()) {
-            if (map.get(item) > n/2) {
-                return item;
-            }
+
+        counter = 0;
+        for (int i : num) {
+            if (i == candidate) counter++;
         }
-        return -1;
-    }
+        if (counter < (n + 1) / 2) return -1;
+        return candidate;
 }
 
-http://www.cnblogs.com/EdwardLiu/p/4179345.html
+}
+
+http://en.wikipedia.org/wiki/Boyer-Moore_Majority_Vote_Algorithm
