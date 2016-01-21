@@ -1,0 +1,17 @@
+public class Solution {
+    public int maxProduct(int[] nums) {
+        int local_max=nums[0];
+        int local_min=nums[0];
+        int global_max=nums[0];
+        
+        for (int i=1; i<nums.length; i++) {
+            int temp=local_max;
+            local_max=Math.max(local_max*nums[i], local_min*nums[i]);
+            local_max=Math.max(local_max, nums[i]);
+            local_min=Math.min(temp*nums[i], local_min*nums[i]);
+            local_min=Math.min(local_min, nums[i]);
+            global_max=Math.max(global_max, local_max);
+        }
+        return global_max;
+    }
+}
