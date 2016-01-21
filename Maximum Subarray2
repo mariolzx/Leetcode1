@@ -7,9 +7,7 @@ public class Solution {
             local_max=Math.max(local_max, 0);
             local_max += nums[i];
             global_max=Math.max(global_max, local_max);
-            global_max=Math.max(global_max, local_max);
         }
-        
         return global_max;
     }
 }
