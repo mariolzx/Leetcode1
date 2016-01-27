@@ -1,0 +1,28 @@
+public class Solution {
+    public String getHint(String secret, String guess) {
+        HashMap<Integer, Integer> hm=new HashMap<Integer, Integer>();
+        int bull=0;
+        int cows=0;
+        int int_s=0;
+        int int_g=0;
+        for (int i=0; i<secret.length(); i++) {
+            int_s=Character.getNumericValue(secret.charAt(i));
+            int_g=Character.getNumericValue(guess.charAt(i));
+            if (int_s==int_g) bull++;
+            else {if (hm.containsKey(int_s))  {
+                     if (hm.get(int_s)<0) {cows++;}
+                     hm.put(int_s, hm.get(int_s)+1);}
+                  else hm.put(int_s, 1);
+                  
+                  if (hm.containsKey(int_g))  {
+                     if (hm.get(int_g)>0) {cows++;}
+                     hm.put(int_g, hm.get(int_g)-1);}
+                  else hm.put(int_g, -1);
+                  
+                 }
+            
+        }
+    return bull+"A"+cows+"B";
+    }        
+        
+    }
