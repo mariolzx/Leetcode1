@@ -25,7 +25,7 @@ public double pow(double x, int n) {
 
 ////////////////////////
 public class Solution {
-    public double pow(double x, int n) {
+    public double myPow(double x, int n) {
         double res=1;
         double result=0;
         int m=Math.abs(n);
