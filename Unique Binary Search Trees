@@ -10,7 +10,7 @@ Count[i] = ∑ Count[0...k] * [ k+1....i]     0<=k<i-1
 
 */
     public int numTrees(int n) {
-        int[] count = new int[n+2];
+        int[] count = new int[n+1];
         count[0] = 1;
         count[1] = 1;
         
