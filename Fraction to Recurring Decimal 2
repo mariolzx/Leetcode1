@@ -1,3 +1,5 @@
+//multiply numberator by 10 over and over again, then divide it by the denominator
+//to see whether and when the same pattern will repeat.
 public class Solution {
     public String fractionToDecimal(int numerator, int denominator) {
         if (numerator == 0) return "0";
