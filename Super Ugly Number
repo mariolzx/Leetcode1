@@ -12,7 +12,7 @@ public static int nthSuperUglyNumber(int n, int[] primes) {
             }
         }
         prime[minIndex]++;
-        if(min != dp[dpIndex - 1]){
+        if(min != dp[dpIndex - 1]){ //skip duplicate numbers
             dp[dpIndex] = min;
             dpIndex++;
         }
