@@ -13,3 +13,6 @@ public class Solution {
         return res - 1;
     }
 }
+
+///
+http://www.cnblogs.com/grandyang/p/5100098.html
