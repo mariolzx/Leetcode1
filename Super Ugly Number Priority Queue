@@ -13,7 +13,7 @@ public class Solution {
                 cur = q.poll();
                 cur.val = ugly_number[++cur.index] * cur.prime;
                 q.add(cur);
-            } while (!q.isEmpty() && q.peek().val == ugly_number[i]);
+            } while (!q.isEmpty() && q.peek().val == ugly_number[i]);  //remove duplicate numbers
         }
         return ugly_number[n - 1];
     }
