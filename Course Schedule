@@ -45,3 +45,4 @@ public boolean canFinish(int numCourses, int[][] prerequisites) {
 }
 
 }
+http://www.programcreek.com/2014/05/leetcode-course-schedule-java/
