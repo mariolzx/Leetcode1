@@ -1,0 +1,49 @@
+public class Solution {
+
+ public int numIslands(char[][] positions) {
+    int result=0;
+    int m=positions.length;
+    if (m<=0) return 0;
+    int n=positions[0].length;
+
+    if(m <= 0 || n <= 0) return 0;
+    int[][] dirs = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+    int count = 0;                      // number of islands
+    int[] roots = new int[m * n];       // one island = one tree
+    Arrays.fill(roots, -1);            
+
+      for (int i=0; i<positions.length; i++) {
+          for (int j=0; j<positions[0].length; j++) {
+              
+       if (positions[i][j]=='1') {
+         int root = n * (i) + (j);     // assume new point is isolated island
+         roots[root] = root;             // add new island
+         result++;
+
+         for(int[] dir : dirs) {
+            int x = (i) + dir[0]; 
+            int y = (j) + dir[1];
+            int nb = n * x + y;
+            if(x < 0 || x >= m || y < 0 || y >= n || roots[nb] == -1) continue;
+
+            int rootNb = findIsland(roots, nb);
+            if(root != rootNb) {        // if neighbor is in another island
+                roots[root] = rootNb;   // union two islands 
+                root = rootNb;          // current tree root = joined tree root
+                result--;               
+             }
+          }
+          }
+         }
+     }
+    return result;
+}
+
+public int findIsland(int[] roots, int id) {
+    while(id != roots[id]) {
+        roots[id] = roots[roots[id]];   // only one line added
+        id = roots[id];
+    }
+    return id;
+}
+}
