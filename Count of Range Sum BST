@@ -1,3 +1,5 @@
+/////
+http://www.qinshaoxuan.com/articles/930.html
 public class Solution {
     private class TreeNode {
         long val = 0;
