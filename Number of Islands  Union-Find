@@ -53,10 +53,6 @@ public class Solution {
         if (root1 == root2) return; // without this, fail @["111","111","111"]
         int iRoot1 = root1 / n, jRoot1 = root1 % n;
         int iRoot2 = root2 / n, jRoot2 = root2 % n;
-        if (s[iRoot1][jRoot1] < s[iRoot2][jRoot2]) {
-            s[iRoot2][jRoot2] = iRoot1 * n + jRoot1;
-        } else {
-            s[iRoot1][jRoot1] = iRoot2 * n + jRoot2;
-        }
+        s[iRoot1][jRoot1] = iRoot2 * n + jRoot2;
     }
 }
