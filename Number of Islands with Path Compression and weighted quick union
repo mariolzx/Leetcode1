@@ -31,10 +31,12 @@ public class Solution {
             int rootNb = findIsland(roots, nb);
             if(root != rootNb) {        // if neighbor is in another island
               if (sz[root] < sz[rootNb]) { //weighted quick union
-              roots[root] = rootNb; sz[rootNb] += sz[root];
+              roots[root] = rootNb; 
+              sz[rootNb] += sz[root];
               root=rootNb;  // current tree root = joined tree root
               } else {
-              roots[rootNb] = root; sz[root] += sz[rootNb];
+              roots[rootNb] = root; 
+              sz[root] += sz[rootNb];
               }
                 result--;               
              }
