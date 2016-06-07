@@ -56,8 +56,6 @@ public class Solution {
         if (s[iRoot1][jRoot1] < s[iRoot2][jRoot2]) {
             s[iRoot2][jRoot2] = iRoot1 * n + jRoot1;
         } else {
-            if (s[iRoot1][jRoot1] == s[iRoot2][jRoot2])
-                s[iRoot2][jRoot2]--;
             s[iRoot1][jRoot1] = iRoot2 * n + jRoot2;
         }
     }
