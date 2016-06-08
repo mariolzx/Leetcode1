@@ -28,8 +28,8 @@ public class Solution {
 
             int rootNb = findIsland(roots, nb);
             if(root != rootNb) {        // if neighbor is in another island
-                roots[root] = rootNb;   // union two islands 
-                root = rootNb;          // current tree root = joined tree root
+                roots[rootNb] = root;   // union two islands 
+                rootNb = root;          // current tree root = joined tree root
                 result--;               
              }
           }
