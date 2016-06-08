@@ -1,3 +1,5 @@
+//http://algs4.cs.princeton.edu/15uf/
+//if we use path compression, we do not need weighted quick union
 public class Solution {
 
  public int numIslands(char[][] positions) {
